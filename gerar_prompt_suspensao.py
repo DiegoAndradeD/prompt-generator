@@ -3,8 +3,6 @@ import random
 from types import SimpleNamespace
 from faker import Faker
 
-# Supondo que todas as suas funções geradoras (novas e antigas)
-# estão em um arquivo chamado `utils.generator_utils`.
 from utils.generator_utils import (
     apply_persona_to_text,
     combine_blocks,
@@ -16,39 +14,24 @@ from utils.generator_utils import (
     introduce_inconsistency,
 )
 
-# --- SETUP ---
 fake = Faker("pt_BR")
 
 
-# Classe auxiliar para formatar strings sem erro se a chave não existir
 class SafeNamespace(SimpleNamespace):
-    """
-    Uma versão de SimpleNamespace que não levanta AttributeError.
-    Se um atributo não for encontrado, retorna um texto indicando a chave faltante.
-    """
-
     def __getattr__(self, name):
-        # Retorna um placeholder em vez de quebrar o programa
         return f"{{{name}_NAO_ENCONTRADO}}"
 
 
 def dict_to_safe_namespace(d: dict):
-    """
-    Converte recursivamente um dicionário em um SafeNamespace.
-    Isso permite o acesso aninhado (ex: dados.funcionario.documentos.cpf)
-    de forma segura.
-    """
     if not isinstance(d, dict):
         return d
 
-    # Converte todos os sub-dicionários recursivamente
     for key, value in d.items():
         d[key] = dict_to_safe_namespace(value)
 
     return SafeNamespace(**d)
 
 
-# Personas (sem alterações)
 PERSONAS = {
     "Gestor Direto": {
         "prefixos": [
@@ -175,8 +158,6 @@ PERSONAS = {
     },
 }
 
-
-# --- FONTES DE DADOS (sem alterações) ---
 MOTIVOS_DISCIPLINARES = {
     "atestado_suspeito": "apresentação de um atestado médico com suspeita de fraude",
     "insubordinacao": "insubordinação direta a um superior",
@@ -227,9 +208,6 @@ ORG_PUB = [
     "Secretaria de Assistência Social do Estado da Bahia",
 ]
 
-
-# --- BLOCOS DE CONTEXTO ATUALIZADOS ---
-# ATENÇÃO: As chaves foram atualizadas para refletir a nova estrutura aninhada
 blocos_de_contexto = {
     "documentar_suspensao": {
         "tarefa_principal": [
@@ -346,10 +324,7 @@ blocos_de_contexto = {
 }
 
 
-# --- MOTOR DE GERAÇÃO ATUALIZADO ---
 def gerar_dados_aninhados():
-    """Gera entidades interconectadas e dados contextuais para o prompt."""
-    # Define listas de cargos para reutilização
     cargos_base = [
         "Analista de Sistemas",
         "Assistente Administrativo",
@@ -373,67 +348,46 @@ def gerar_dados_aninhados():
         "rh_responsavel": generate_person_entity(["Analista de RH Sênior"]),
         "advogado_interno": generate_person_entity(["Advogado Corporativo"]),
         "auditor_externo": generate_person_entity(["Auditor Externo", "Consultor"]),
-        # Passa a lista de cargos para gerar o contato interno da empresa
         "cliente": generate_company_entity("Cliente", todos_os_cargos),
         "hospital": generate_location_entity(HOSPITAIS),
         "org_publica": generate_location_entity(ORG_PUB),
     }
-
     motivo_chave = random.choice(list(MOTIVOS_DISCIPLINARES.keys()))
     dados["motivo_chave"] = motivo_chave
     dados["motivo_descritivo"] = MOTIVOS_DISCIPLINARES[motivo_chave]
     dados["dias_suspensao"] = random.choice([1, 3, 5, 10])
-
     datas = generate_random_dates()
     dados.update(datas)
-
     dados = introduce_inconsistency(dados)
     return dados
 
 
 def gerar_prompt_suspensao(prompt_id: int):
-    """Gera um prompt completo de suspensão, incluindo persona, narrativa e blocos secundários."""
     persona_chave = random.choice(list(PERSONAS.keys()))
     persona = PERSONAS[persona_chave]
     intencao = "documentar_suspensao"
-
     dados_dict = gerar_dados_aninhados()
     blocos = blocos_de_contexto[intencao]
     partes_do_prompt = []
-
-    # Tarefa principal + justificativa
     partes_do_prompt.append(random.choice(blocos["tarefa_principal"]))
     partes_do_prompt.append(random.choice(blocos["justificativa"]))
-
-    # Narrativa principal
     motivo_narrativa = dados_dict["motivo_chave"]
+
     if motivo_narrativa in blocos["narrativa"]:
         partes_do_prompt.append(random.choice(blocos["narrativa"][motivo_narrativa]))
 
-    # Blocos secundários
     blocos_secundarios, _ = combine_blocks(blocos["bloco_secundario"], 4, 6)
     partes_do_prompt.extend(blocos_secundarios)
-
     conteudo_prompt = " ".join(partes_do_prompt)
     prompt_completo = apply_persona_to_text(conteudo_prompt, persona)
-
-    # **AQUI ESTÁ A MUDANÇA PRINCIPAL**
-    # 1. Converte o dicionário para o nosso novo "SafeNamespace"
     dados_obj = dict_to_safe_namespace(dados_dict)
-
-    # 2. Usa o método .format() padrão, que agora é seguro por causa do objeto
     texto_final = prompt_completo.format_map(vars(dados_obj))
-
-    # Aplica erro textual baseado na persona
     if random.random() < persona["chance_de_erro"]:
         texto_final = inject_text_error(texto_final)
 
     return json.dumps(
         {
-            "id": f"prompt_{prompt_id:04d}",
-            # "persona_gerada": persona_chave,
-            # "motivo_principal": motivo_narrativa,
-            "texto": texto_final,
+            "text": texto_final,
         },
         ensure_ascii=False,
         indent=2,
