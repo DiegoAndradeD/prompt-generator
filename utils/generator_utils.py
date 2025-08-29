@@ -272,3 +272,153 @@ def generate_pix_key() -> str:
 
 def generate_lawsuit_number() -> str:
     return f"{fake.random_number(digits=7, fix_len=True)}-{fake.random_number(digits=2, fix_len=True)}.{fake.random_number(digits=4, fix_len=True)}.{fake.random_digit()}.{fake.random_number(digits=2, fix_len=True)}.{fake.random_number(digits=4, fix_len=True)}"
+
+
+class SafeNamespace(SimpleNamespace):
+    def __getattr__(self, name):
+        return f"{{{name}_NAO_ENCONTRADO}}"
+
+
+def dict_to_safe_namespace(d: dict):
+    if not isinstance(d, dict):
+        return d
+
+    for key, value in d.items():
+        d[key] = dict_to_safe_namespace(value)
+
+    return SafeNamespace(**d)
+
+
+def generate_department_entity():
+    departamentos = [
+        "Tecnologia da Informação",
+        "Recursos Humanos",
+        "Financeiro",
+        "Comercial",
+        "Operações",
+        "Marketing",
+        "Jurídico",
+        "Logística",
+    ]
+    return {
+        "nome": random.choice(departamentos),
+        "codigo": f"DEPT{random.randint(100, 999)}",
+        "centro_custo": f"{random.randint(1000, 9999)}",
+    }
+
+
+def format_currency(value):
+    """Format number as Brazilian currency"""
+    return f"{value:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+
+def generate_financial_values():
+    """Generate all financial values needed for the templates"""
+    return {
+        # Basic payroll values
+        "valor_folha_total": format_currency(random.randint(150000, 800000)),
+        "valor_salarios": format_currency(random.randint(100000, 500000)),
+        "valor_beneficios": format_currency(random.randint(20000, 80000)),
+        "valor_encargos": format_currency(random.randint(30000, 150000)),
+        "salario_individual": format_currency(random.randint(8000, 25000)),
+        "custo_departamento": format_currency(random.randint(50000, 200000)),
+        "budget_total": format_currency(random.randint(2000000, 10000000)),
+        # Percentages and metrics
+        "percentual_variacao": round(random.uniform(-5.0, 15.0), 1),
+        "percentual_terceirizados": round(random.uniform(10.0, 35.0), 1),
+        "percentual_receita_liquida": round(random.uniform(25.0, 45.0), 1),
+        "percentual_orcamento_dept": round(random.uniform(15.0, 35.0), 1),
+        "percentual_mercado": round(random.uniform(5.0, 25.0), 1),
+        "percentual_impacto_orcamento": round(random.uniform(2.0, 8.0), 1),
+        "percentual_horas_departamento": round(random.uniform(20.0, 60.0), 1),
+        "percentual_carga_tributaria": round(random.uniform(35.0, 45.0), 1),
+        "percentual_reducao_beneficios": round(random.uniform(5.0, 15.0), 1),
+        # Quantities and counts
+        "qtd_colaboradores": random.randint(15, 150),
+        # Cost centers and accounts
+        "centro_custo_1": f"CC{random.randint(1000, 9999)}",
+        "centro_custo_2": f"CC{random.randint(1000, 9999)}",
+        "valor_centro_custo_1": format_currency(random.randint(80000, 300000)),
+        "valor_centro_custo_2": format_currency(random.randint(60000, 250000)),
+        "conta_bancaria_empresa": fake.random_number(digits=8, fix_len=True),
+        "conta_provisoes": fake.random_number(digits=8, fix_len=True),
+        # Cash flow and reserves
+        "desembolso_mensal": format_currency(random.randint(150000, 800000)),
+        "reserva_caixa_folha": format_currency(random.randint(300000, 2000000)),
+        # Detailed financial values
+        "valor_terceirizados": format_currency(random.randint(30000, 120000)),
+        "ajuste_orcamentario": format_currency(random.randint(50000, 200000)),
+        "valor_beneficios_total": format_currency(random.randint(3000, 12000)),
+        "valor_provisoes_total": format_currency(random.randint(80000, 300000)),
+        "valor_ferias": format_currency(random.randint(25000, 100000)),
+        "valor_13_salario": format_currency(random.randint(20000, 80000)),
+        "valor_fgts": format_currency(random.randint(15000, 60000)),
+        "valor_inss": format_currency(random.randint(20000, 80000)),
+        "provisao_individual": format_currency(random.randint(5000, 20000)),
+        "salario_atual": format_currency(random.randint(4000, 15000)),
+        "orcamento_departamento": format_currency(random.randint(200000, 800000)),
+        "reserva_contingencia": format_currency(random.randint(100000, 500000)),
+        "valor_horas_extras": format_currency(random.randint(15000, 60000)),
+        "valor_hora_media": format_currency(random.randint(25, 80)),
+        # Performance indicators
+        "custo_medio_colaborador": format_currency(random.randint(8000, 25000)),
+        "variacao_custo_medio": round(random.uniform(2.0, 12.0), 1),
+        "custo_turnover": format_currency(random.randint(15000, 50000)),
+        "margem_contribuicao": round(random.uniform(15.0, 35.0), 1),
+        "roi_treinamento": format_currency(random.uniform(2.5, 8.0)),
+        "roi_beneficios": round(random.uniform(15.0, 35.0), 1),
+        "posicionamento_salarial": round(random.uniform(5.0, 25.0), 1),
+        "competitividade_beneficios": round(random.uniform(80.0, 120.0), 1),
+        "produtividade_colaborador": format_currency(random.randint(50000, 200000)),
+        "superacao_produtividade": round(random.uniform(5.0, 20.0), 1),
+        # Projections and budget
+        "projecao_12_meses": format_currency(random.randint(1800000, 9600000)),
+        "impacto_dissidio": format_currency(random.randint(100000, 500000)),
+        "economia_otimista": format_currency(random.randint(50000, 300000)),
+        "custo_novas_contratacoes": format_currency(random.randint(200000, 800000)),
+        # Tax and compliance
+        "carga_tributaria_total": format_currency(random.randint(60000, 300000)),
+        "contribuicao_inss_patronal": format_currency(random.randint(30000, 120000)),
+        "contribuicao_fgts": format_currency(random.randint(12000, 50000)),
+        "contribuicao_sistema_s": format_currency(random.randint(8000, 30000)),
+        "economia_tributaria": format_currency(random.randint(25000, 100000)),
+        # Risk and contingencies
+        "exposicao_trabalhista": format_currency(random.randint(500000, 2000000)),
+        "valor_contingenciamento": format_currency(random.randint(200000, 800000)),
+        "cobertura_seguro_executivos": format_currency(
+            random.randint(5000000, 20000000)
+        ),
+        # Recommendations and savings
+        "economia_sistema_ponto": format_currency(random.randint(50000, 200000)),
+        "custo_substituicao_critica": format_currency(random.randint(80000, 300000)),
+    }
+
+
+def generate_additional_financial_dates():
+
+    base_date = datetime.now()
+    return {
+        "data_inicio": (base_date - timedelta(days=90)).strftime("%d/%m/%Y"),
+        "data_fim": (base_date - timedelta(days=1)).strftime("%d/%m/%Y"),
+        "data_aprovacao_budget": (base_date - timedelta(days=180)).strftime("%d/%m/%Y"),
+        "data_vigencia_dissidio": (base_date + timedelta(days=30)).strftime("%d/%m/%Y"),
+        "data_validacao": (base_date - timedelta(days=2)).strftime("%d/%m/%Y"),
+        "data_recomendacao": (base_date + timedelta(days=60)).strftime("%d/%m/%Y"),
+        "ano_proximo": (base_date.year + 1),
+    }
+
+
+def generate_financial_metadata():
+    return {
+        "protocolo_arquivo": f"PROT{random.randint(100000, 999999)}",
+        "usuario_sistema": f"usr{random.randint(1000, 9999)}",
+        "numero_apolice": f"{random.randint(100000, 999999)}-{random.randint(10, 99)}",
+        "inflacao_projetada": round(random.uniform(3.5, 8.0), 1),
+        "crescimento_headcount": round(random.uniform(5.0, 20.0), 1),
+        "total_horas_extras": random.randint(200, 1500),
+        "horas_individuais": random.randint(20, 80),
+        "tempo_casa": random.randint(1, 15),
+        "meses_reserva_caixa": random.randint(2, 6),
+        "numero_contratacoes": random.randint(5, 50),
+        "reducao_tempo_fechamento": random.randint(1, 5),
+    }
