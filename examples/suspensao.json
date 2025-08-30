@@ -1,0 +1,42 @@
+{
+    "categoria": "suspensao",
+    "descricao": "Exemplos de prompts para gerar relatórios de suspensão disciplinar",
+    "versao": "1.0",
+    "exemplos": [
+      {
+        "id": "susp_001",
+        "subcategoria": "uso_inadequado_recursos",
+        "nivel_complexidade": "alto",
+        "tags": ["disciplinar", "tecnologia", "evidencias_tecnicas"],
+        "prompt": "Elabore o comunicado de suspensão para o(a) funcionário(a) Beatriz Ramos, CPF 376 804 512 90, matrícula 86418, ocupante do cargo de Analista de Sistemas. A suspensão é aplicada para resguardar a integridade do ambiente de trabalho diante de uso inadequado de recursos digitais e redes corporativas. As evidências incluem e-mails trocados, logs de sistema (MAC Address: 08:37:7a:9d:b4:a1), o depoimento formal da testemunha Maria Vitória Garcia e o relatório do auditor Sr. Benício Pimenta. Providencie acompanhamento do colaborador durante o período de suspensão para garantir cumprimento das normas internas."
+      },
+      {
+        "id": "susp_002",
+        "subcategoria": "assedio_moral",
+        "nivel_complexidade": "muito_alto",
+        "tags": ["disciplinar", "assedio", "investigacao"],
+        "prompt": "Redija a notificação de suspensão disciplinar para Roberto Silva Santos, CPF 123.456.789-10, matrícula 45789, Supervisor de Vendas do setor comercial. A medida decorre de denúncia formal por assédio moral contra subordinados, protocolada sob número 2024-HR-0156. Testemunhas: Carla Mendes (matrícula 33445) e José Ferreira (matrícula 33891). Período de suspensão: 7 dias úteis a partir de 15/11/2024. Durante este período, será conduzida investigação completa pelos auditores internos Dra. Fernanda Lima e Dr. Marcos Pereira."
+      },
+      {
+        "id": "susp_003",
+        "subcategoria": "violacao_seguranca",
+        "nivel_complexidade": "alto",
+        "tags": ["seguranca", "industrial", "sesmt"],
+        "prompt": "Proceda com a suspensão imediata de Eduardo Martins Costa, CPF 456.789.123-45, matrícula 78934, Técnico de Manutenção Industrial. Violação grave de normas de segurança do trabalho: entrada em área restrita sem EPI obrigatório (capacete, óculos de proteção e luvas dielétricas) registrada pelas câmeras de segurança em 10/11/2024 às 14:32h. Laudo técnico do SESMT confirma risco iminente de acidente fatal. Testemunha ocular: Encarregado de Segurança João Carlos Silva (CREA 12345-SP)."
+      },
+      {
+        "id": "susp_004",
+        "subcategoria": "baixo_desempenho",
+        "nivel_complexidade": "medio",
+        "tags": ["performance", "metas", "comercial"],
+        "prompt": "Formalize a suspensão administrativa de Ana Claudia Torres, CPF 987.123.456-78, matrícula 67823, Coordenadora de Projetos. Motivo: descumprimento sistemático de metas por três trimestres consecutivos (Q1: 45% da meta, Q2: 38% da meta, Q3: 52% da meta). Evidências documentais incluem: relatórios mensais de performance, feedbacks de clientes (NPS médio: 3.2/10), e-mails de escalação da gerência. Suspensão de 5 dias para reavaliação de funções e elaboração de plano de desenvolvimento individual (PDI)."
+      }
+    ],
+    "metadados": {
+      "total_exemplos": 4,
+      "subcategorias": ["uso_inadequado_recursos", "assedio_moral", "violacao_seguranca", "baixo_desempenho"],
+      "niveis_complexidade": ["medio", "alto", "muito_alto"],
+      "criado_em": "2024-11-29",
+      "ultima_atualizacao": "2024-11-29"
+    }
+  }

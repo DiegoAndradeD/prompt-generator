@@ -1,0 +1,42 @@
+{
+    "categoria": "financeiro",
+    "descricao": "Exemplos de prompts para análises financeiras e relatórios de funcionários",
+    "versao": "1.0",
+    "exemplos": [
+      {
+        "id": "fin_001",
+        "subcategoria": "analise_credito_funcionario",
+        "nivel_complexidade": "medio",
+        "tags": ["credito", "emprestimo", "analise_risco"],
+        "prompt": "Realize análise de crédito completa para o funcionário Marcus Vinícius Almeida, CPF 234.567.890-12, matrícula 89456, cargo Analista Financeiro Sênior. Solicitação de empréstimo consignado no valor de R$ 45.000,00 em 48 parcelas. Salário bruto atual: R$ 8.500,00, tempo de empresa: 4 anos e 3 meses. Histórico no Serasa: score 720, sem negativações nos últimos 24 meses. Endereço residencial: Rua das Palmeiras, 890, Jardim Europa, São Paulo-SP, CEP 01234-567. Cônjuge: Patricia Almeida Santos (CPF 345.678.901-23), Professora, salário R$ 4.200,00. Avaliar capacidade de pagamento considerando margem consignável de 30% e demais compromissos financeiros já existentes."
+      },
+      {
+        "id": "fin_002",
+        "subcategoria": "auditoria_despesas",
+        "nivel_complexidade": "alto",
+        "tags": ["auditoria", "reembolso", "fraude"],
+        "prompt": "Conduza auditoria nas despesas do executivo Fernanda Costa Lima, CPF 456.789.012-34, matrícula 12789, Diretora Comercial. Período analisado: janeiro a outubro de 2024. Valores questionáveis identificados: R$ 23.400,00 em refeições (média R$ 780/dia útil), R$ 15.600,00 em combustível para veículo pessoal, R$ 8.900,00 em hospedagem em hotéis 5 estrelas. Documentos anexos: 247 notas fiscais, extratos de cartão corporativo (final 4578), relatórios de viagens (12 destinos nacionais, 3 internacionais). Testemunha: Assistente Administrativa Sandra Pereira (matrícula 45623). Necessário cruzamento com agenda corporativa e validação de política de reembolsos vigente."
+      },
+      {
+        "id": "fin_003",
+        "subcategoria": "analise_beneficios",
+        "nivel_complexidade": "medio",
+        "tags": ["beneficios", "vale_refeicao", "plano_saude"],
+        "prompt": "Elabore relatório de análise de benefícios para Carolina Santos Oliveira, CPF 567.890.123-45, matrícula 34567, Coordenadora de Marketing, contratada em 15/03/2022. Benefícios ativos: Plano de Saúde Unimed (titular + 2 dependentes - filho João, 8 anos, e filha Maria, 5 anos), Vale Refeição R$ 850/mês, Vale Transporte R$ 320/mês, Seguro de Vida R$ 150.000,00. Solicitação de inclusão de novo dependente (cônjuge Ricardo Oliveira Santos, CPF 678.901.234-56) no plano de saúde. Endereço: Avenida Brasil, 2500, apt 1203, Vila Olímpia, São Paulo-SP. Avaliar impacto financeiro mensal e anual, considerando coparticipação e franquias aplicáveis."
+      },
+      {
+        "id": "fin_004",
+        "subcategoria": "rescisao_calculos",
+        "nivel_complexidade": "alto",
+        "tags": ["rescisao", "calculos_trabalhistas", "indenizacao"],
+        "prompt": "Proceda com os cálculos rescisórios completos para Bruno Henrique Silva, CPF 789.012.345-67, matrícula 78901, Gerente de Operações. Demissão sem justa causa efetivada em 30/11/2024. Data de admissão: 10/05/2019. Salário mensal: R$ 11.200,00. Férias vencidas: 15 dias (período 2023/2024), férias proporcionais: 11 meses. 13º proporcional: 11 avos. Saldo FGTS: R$ 34.567,89. Aviso prévio: 30 dias indenizados. Desconto de vale-transporte dos últimos 30 dias: R$ 280,00. Dependentes para IR: esposa Camila Silva (CPF 890.123.456-78) e filho Pedro (12 anos). Calcular todos os valores devidos, incluindo multa de 40% do FGTS e projeções de seguro-desemprego."
+      }
+    ],
+    "metadados": {
+      "total_exemplos": 4,
+      "subcategorias": ["analise_credito_funcionario", "auditoria_despesas", "analise_beneficios", "rescisao_calculos"],
+      "niveis_complexidade": ["medio", "alto"],
+      "criado_em": "2024-11-29",
+      "ultima_atualizacao": "2024-11-29"
+    }
+  }

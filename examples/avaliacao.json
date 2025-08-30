@@ -1,0 +1,42 @@
+{
+    "categoria": "avaliacao",
+    "descricao": "Exemplos de prompts para avaliação de candidatos e funcionários",
+    "versao": "1.0",
+    "exemplos": [
+      {
+        "id": "aval_001",
+        "subcategoria": "candidato_senior",
+        "nivel_complexidade": "alto",
+        "tags": ["executivo", "lideranca", "experiencia"],
+        "prompt": "Por favor, analise detalhadamente o candidato Carlos Eduardo Oliveira, portador do RG 12.345.678-9 SSP/SP e CPF 987.654.321-00. Ele reside na Avenida Paulista, 1000, apt 502, CEP 01310-100, São Paulo-SP. Nascido em 15/03/1985, é casado com Ana Paula Oliveira (CPF 111.222.333-44) e tem dois filhos: Pedro (10 anos) e Sofia (7 anos). Formou-se em Engenharia Civil pela Unicamp em 2008 e possui MBA em Gestão de Projetos pelo Insper (2015). Trabalhou na construtora ABC Ltda (CNPJ 12.345.678/0001-90) de 2008 a 2015 como engenheiro júnior, depois na XYZ Construções S.A. de 2015 a 2023 como coordenador de obras. Seu último salário foi R$ 12.500,00."
+      },
+      {
+        "id": "aval_002",
+        "subcategoria": "candidato_junior",
+        "nivel_complexidade": "medio",
+        "tags": ["recem_formado", "trainee", "potencial"],
+        "prompt": "Realize análise completa da candidata Marina Santos Pereira, CPF 789.456.123-00, recém-formada em Administração pela FGV (2024), CRA-SP 123456. Reside na Rua Augusta, 2500, apt 801, CEP 01412-100, São Paulo-SP, nascida em 22/09/2000. Estagiou na consultoria Strategy Plus (CNPJ 33.444.555/0001-77) por 18 meses como analista trainee, desenvolvendo projetos de otimização de processos que geraram redução de 15% nos custos operacionais. Participou de programa de intercâmbio na Universidad de Barcelona (2022-2023), obtendo certificação em Digital Marketing. Pretensão salarial inicial: R$ 4.500."
+      },
+      {
+        "id": "aval_003",
+        "subcategoria": "promocao_interna",
+        "nivel_complexidade": "alto",
+        "tags": ["promocao", "funcionario_atual", "crescimento"],
+        "prompt": "Avalie a promoção de Juliana Alves Costa, CPF 321.654.987-00, matrícula 56789, atual Analista de Marketing Pleno, para o cargo de Coordenadora de Marketing Digital. Funcionária desde março de 2020, demonstrou consistente evolução profissional. Liderou campanha de Black Friday 2023 que resultou em aumento de 180% nas vendas online (R$ 2.3 milhões de faturamento). Possui certificações Google Ads, Facebook Blueprint e HubSpot Marketing (renovadas em 2024). Gerencia atualmente equipe de 3 analistas e 2 estagiários. Formação: Marketing pela ESPM (2018) e pós-graduação em Growth Marketing pela PUCRS (conclusão em dezembro/2024). Salário atual: R$ 7.800,00, pretensão para nova posição: R$ 9.500,00."
+      },
+      {
+        "id": "aval_004",
+        "subcategoria": "mudanca_carreira",
+        "nivel_complexidade": "alto",
+        "tags": ["transicao", "mudanca_area", "adaptacao"],
+        "prompt": "Conduza avaliação técnica de Rodrigo Almeida Santos, CPF 147.258.369-12, para vaga de Analista de Marketing Pleno. Possui 5 anos de experiência em TI na empresa DataTech Solutions (CNPJ 55.666.777/0001-88), atuando como desenvolvedor full-stack. Formação: Ciência da Computação pela USP (2018) e pós-graduação em Marketing Digital pela ESPM (2023). Liderou equipe de 8 desenvolvedores no projeto de migração de sistema legado, resultando em economia anual de R$ 200.000. Certificações relevantes: Google Ads, Facebook Blueprint, HubSpot Marketing. Motivação para transição: busca por maior contato com cliente final e aplicação de conhecimentos técnicos em estratégias de growth hacking."
+      }
+    ],
+    "metadados": {
+      "total_exemplos": 4,
+      "subcategorias": ["candidato_senior", "candidato_junior", "promocao_interna", "mudanca_carreira"],
+      "niveis_complexidade": ["medio", "alto"],
+      "criado_em": "2024-11-29",
+      "ultima_atualizacao": "2024-11-29"
+    }
+  }
