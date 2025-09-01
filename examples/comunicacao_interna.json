@@ -1,0 +1,35 @@
+{
+    "categoria": "comunicacao_interna",
+    "descricao": "Exemplos de prompts para comunicação interna, incluindo envio de mensagens, convites e notificações",
+    "versao": "1.0",
+    "exemplos": [
+      {
+        "id": "com_001",
+        "subcategoria": "convite_reuniao",
+        "nivel_complexidade": "medio",
+        "tags": ["reuniao", "equipe", "notificacao"],
+        "prompt": "Por favor, elabore um convite formal para reunião semanal da equipe de Marketing. Participantes: Ana Beatriz Costa (ana.costa@empresa.com, telefone (11) 91234-5678), Lucas Ferreira (lucas.ferreira@empresa.com, telefone (11) 99876-5432) e Renata Lima (renata.lima@empresa.com, telefone (11) 97654-3210). A reunião será realizada na próxima quarta-feira, às 10h, via Microsoft Teams. Inclua no texto o objetivo da reunião: revisão de campanhas de redes sociais e planejamento de próximos projetos."
+      },
+      {
+        "id": "com_002",
+        "subcategoria": "notificacao_evento",
+        "nivel_complexidade": "medio",
+        "tags": ["evento", "funcionarios", "comunicacao"],
+        "prompt": "Crie uma notificação interna para informar sobre o evento de integração de novos funcionários. Destinatários: Carlos Eduardo Oliveira (carlos.eduardo@empresa.com, telefone (21) 98765-4321), Marina Santos Pereira (marina.santos@empresa.com, telefone (21) 99887-6655). O evento ocorrerá na sexta-feira, 6 de setembro, das 14h às 17h, no auditório principal. Inclua instruções sobre confirmação de presença e dress code."
+      },
+      {
+        "id": "com_003",
+        "subcategoria": "mensagem_geral",
+        "nivel_complexidade": "baixo",
+        "tags": ["comunicado", "informativo", "departamento"],
+        "prompt": "Redija uma mensagem interna para todos os funcionários do departamento de TI, informando sobre a atualização do sistema de backup. Contatos-chave: Rodrigo Almeida Santos (rodrigo.almeida@empresa.com, telefone (31) 91234-9876), Juliana Alves Costa (juliana.alves@empresa.com, telefone (31) 99876-5432). A mensagem deve explicar o impacto da atualização, horário de manutenção (sábado, 7h às 12h) e orientações para evitar perda de dados."
+      }
+    ],
+    "metadados": {
+      "total_exemplos": 3,
+      "subcategorias": ["convite_reuniao", "notificacao_evento", "mensagem_geral"],
+      "niveis_complexidade": ["baixo", "medio"],
+      "criado_em": "2025-09-01",
+      "ultima_atualizacao": "2025-09-01"
+    }
+  }
