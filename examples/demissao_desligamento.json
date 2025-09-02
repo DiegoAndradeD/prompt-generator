@@ -1,0 +1,59 @@
+{
+    "categoria": "demissao_desligamento",
+    "descricao": "Prompts para processos de demissão e desligamento de funcionários",
+    "versao": "1.0",
+    "exemplos": [
+      {
+        "id": "dem_001",
+        "subcategoria": "pedido_demissao",
+        "nivel_complexidade": "medio",
+        "tags": ["voluntario", "pedido_funcionario", "processos_rh"],
+        "prompt": "Processe o pedido de demissão de Marina Santos Oliveira, CPF 456.789.123-45, matrícula 78456, Analista de Marketing Digital, admitida em 10/03/2022. Solicitação formalizada em 25/08/2024 através do protocolo RH-2024-0892, com último dia de trabalho previsto para 25/09/2024 (cumprimento de aviso prévio de 30 dias). Salário atual: R$ 7.200,00. Motivo alegado: nova oportunidade profissional em empresa multinacional. Endereço: Rua das Flores, 1234, apt 501, Vila Madalena, São Paulo-SP, CEP 05435-020. Cônjuge: Roberto Oliveira Silva (CPF 789.123.456-78). Calcule todas as verbas rescisórias: saldo de salário (25 dias), férias vencidas período 2023/2024 (30 dias) + 1/3 constitucional, férias proporcionais (8 meses), 13º salário proporcional (8 avos), saldo FGTS R$ 28.456,78. Durante o período de aviso prévio, Marina ficará responsável pela transição de projetos para Juliana Costa Pereira (matrícula 89234). Responsável pelo processo: Coordenadora de RH Patricia Lima Santos (patricia.santos@empresa.com)."
+      },
+      {
+        "id": "dem_002",
+        "subcategoria": "desligamento_involuntario",
+        "nivel_complexidade": "alto",
+        "tags": ["dispensa_sem_justa_causa", "reestruturacao", "indenizacao"],
+        "prompt": "Conduza o processo de desligamento involuntário de Carlos Eduardo Mendonça, CPF 123.987.654-32, matrícula 45789, Coordenador de Vendas, contratado em 15/05/2019. Demissão sem justa causa efetivada em 30/11/2024 devido à reestruturação do departamento comercial aprovada pela diretoria em reunião de 15/11/2024 (ata 2024-DIR-087). Salário mensal: R$ 9.800,00. Endereço: Avenida Paulista, 2500, conjunto 1405, Bela Vista, São Paulo-SP, CEP 01310-300. Estado civil: casado com Ana Beatriz Mendonça (CPF 321.654.987-00), 2 filhos menores: Pedro (12 anos) e Sofia (8 anos). Verbas rescisórias: aviso prévio indenizado (30 dias), saldo de salário (30 dias), férias vencidas 2023/2024 (15 dias) + terço constitucional, férias proporcionais (11 meses), 13º salário proporcional (11 avos), multa FGTS 40% sobre saldo de R$ 42.389,67. Carlos possui plano de saúde empresarial (Unimed - família), que será mantido por 6 meses conforme acordo. Responsável técnico: Gerente de RH Francisco Silva Neto (francisco.neto@empresa.com). Homologação agendada para 05/12/2024 no sindicato dos comerciários."
+      },
+      {
+        "id": "dem_003",
+        "subcategoria": "acordo_rescisao",
+        "nivel_complexidade": "muito_alto",
+        "tags": ["acordo_mutuo", "pdi", "homologacao"],
+        "prompt": "Formalize acordo de rescisão mútua entre a empresa e o funcionário Rodrigo Almeida Costa, CPF 789.456.123-90, matrícula 67234, Gerente de Projetos, admitido em 20/01/2018. Acordo proposto após avaliação de desempenho que indicou necessidade de PDI (Plano de Desenvolvimento Individual) não cumprido no prazo estabelecido de 6 meses. Salário atual: R$ 11.500,00. O funcionário concorda com a rescisão mediante as seguintes condições especiais: manutenção do plano de saúde por 12 meses (valor mensal R$ 890,00), outplacement por 6 meses através da consultoria TalentoCorp, e carta de recomendação assinada pela diretoria. Verbas rescisórias conforme CLT: aviso prévio 50% indenizado (R$ 5.750,00), saldo de salário proporcional, férias vencidas período 2023/2024 + 1/3, férias proporcionais (10 meses), 13º proporcional (10 avos), FGTS sem multa de 40% (saque autorizado = R$ 38.567,89). Endereço: Rua Augusta, 3456, apt 802, Consolação, São Paulo-SP. Dependentes: esposa Marina Costa Almeida (CPF 456.123.789-01) e filho Lucas (15 anos). Homologação prevista para 20/12/2024 às 14h no sindicato da categoria. Responsáveis: Diretora de RH Fernanda Lima (fernanda.lima@empresa.com) e advogado trabalhista Dr. João Pereira Silva (OAB/SP 123.456)."
+      },
+      {
+        "id": "dem_004",
+        "subcategoria": "dispensa_remunerada",
+        "nivel_complexidade": "medio",
+        "tags": ["liberacao_imediata", "confidencialidade", "transicao"],
+        "prompt": "Implemente dispensa remunerada para Bruno Henrique Santos, CPF 654.321.987-44, matrícula 89567, Analista de Sistemas Sênior, demitido sem justa causa em 10/11/2024. Por questões de confidencialidade e segurança da informação (acesso a sistemas críticos), o funcionário será liberado imediatamente das atividades, mas receberá remuneração integral durante período de aviso prévio (30 dias). Salário: R$ 8.900,00. Contratado em 05/08/2021. Durante a dispensa remunerada: proibição de acesso às dependências da empresa, bloqueio imediato de todos os acessos digitais (login corporativo, e-mail, VPN), entrega de equipamentos (notebook Dell serial DL789456, celular iPhone final 4578) no ato da comunicação da demissão. Motivo: reestruturação da área de TI com terceirização dos serviços. Endereço: Rua dos Pinheiros, 890, apt 203, Pinheiros, São Paulo-SP, CEP 05422-001. Solteiro, sem dependentes. Verbas a calcular: aviso prévio trabalhado (R$ 8.900,00), saldo de salário (10 dias), férias proporcionais (3 meses), 13º proporcional (3 avos), FGTS + 40% multa sobre R$ 31.245,67. Responsável pela transição de atividades: Coordenador de TI Alexandre Pereira (alexandre.pereira@empresa.com). Homologação: 12/12/2024 às 10h, Sindicato dos Empregados em Empresas de Tecnologia."
+      }
+    ],
+    "diretrizes_especificas": [
+      "✅ Incluir sempre dados completos do funcionário (CPF, matrícula, cargo, admissão)",
+      "✅ Especificar todos os tipos de verbas rescisórias aplicáveis",
+      "✅ Mencionar prazos legais e procedimentos de homologação",
+      "✅ Incluir informações sobre benefícios pós-demissão quando aplicável",
+      "✅ Detalhar motivos específicos e contexto da demissão",
+      "✅ Indicar responsáveis técnicos e próximos passos",
+      "✅ Mencionar aspectos de transição e confidencialidade quando relevante"
+    ],
+    "metricas_qualidade": {
+      "min_palavras": 150,
+      "max_palavras": 600,
+      "requer_calculos": true,
+      "requer_datas": true,
+      "requer_valores_monetarios": true,
+      "requer_dados_familiares": false
+    },
+    "metadados": {
+      "total_exemplos": 4,
+      "subcategorias": ["pedido_demissao", "desligamento_involuntario", "acordo_rescisao", "dispensa_remunerada"],
+      "niveis_complexidade": ["medio", "alto", "muito_alto"],
+      "criado_em": "2025-09-02",
+      "ultima_atualizacao": "2025-09-02"
+    }
+  }

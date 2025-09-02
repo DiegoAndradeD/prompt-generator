@@ -1,16 +1,16 @@
 import json
 import csv
-from typing import List, Dict, Any
+from typing import List
 from pathlib import Path
 from datetime import datetime
 
+from modular_prompt_generator import GeneratedPrompt
+
 
 class PromptExporter:
-    """Utilitário para exportar prompts em diferentes formatos"""
 
     @staticmethod
     def export_to_json(prompts: List["GeneratedPrompt"], output_file: Path) -> bool:
-        """Exporta prompts para arquivo JSON"""
         try:
             data = {
                 "export_date": datetime.now().isoformat(),
@@ -30,12 +30,10 @@ class PromptExporter:
 
     @staticmethod
     def export_to_csv(prompts: List["GeneratedPrompt"], output_file: Path) -> bool:
-        """Exporta prompts para arquivo CSV"""
         try:
             with open(output_file, "w", newline="", encoding="utf-8") as f:
                 writer = csv.writer(f)
 
-                # Cabeçalho
                 writer.writerow(
                     [
                         "categoria",
@@ -51,7 +49,6 @@ class PromptExporter:
                     ]
                 )
 
-                # Dados
                 for prompt in prompts:
                     writer.writerow(
                         [
@@ -73,4 +70,30 @@ class PromptExporter:
 
         except Exception as e:
             print(f"❌ Erro ao exportar CSV: {e}")
+            return False
+
+    @staticmethod
+    def export_to_jsonl(prompts: List["GeneratedPrompt"], output_file: Path) -> bool:
+        try:
+            with open(output_file, "w", encoding="utf-8") as f:
+                for i, prompt in enumerate(prompts):
+                    clean_text = " ".join(
+                        prompt.content.replace("\n", " ")
+                        .replace("\r", " ")
+                        .replace("\t", " ")
+                        .split()
+                    )
+
+                    jsonl_data = {
+                        "prompt_id": i + 1,
+                        "text": clean_text,
+                    }
+
+                    f.write(json.dumps(jsonl_data, ensure_ascii=False) + "\n")
+
+            print(f"✅ Prompts exportados para {output_file} (formato JSONL)")
+            return True
+
+        except Exception as e:
+            print(f"❌ Erro ao exportar JSONL: {e}")
             return False

@@ -29,12 +29,20 @@ class QualityEvaluator:
     def __init__(self, min_words: int = 200, max_words: int = 500):
         self.min_words = min_words
         self.max_words = max_words
+        # Limites específicos por categoria
+        self.category_limits = {
+            "comunicacao_interna": {"min": 50, "max": 300},
+            "suspensao": {"min": 150, "max": 600},
+            "financeiro": {"min": 200, "max": 700},
+            "avaliacao": {"min": 100, "max": 500},
+            "demissao_desligamento": {"min": 150, "max": 600},  # NOVA CATEGORIA
+        }
 
     def evaluate_quality(
         self, texto: str, categoria: str = None
     ) -> Tuple[Dict[str, Any], int, int]:
         """Avalia a qualidade do texto gerado"""
-        base_metrics = self._get_base_metrics(texto)
+        base_metrics = self._get_base_metrics(texto, categoria)
         category_metrics = self._get_category_metrics(texto, categoria)
 
         all_metrics = {**base_metrics, **category_metrics}
@@ -52,9 +60,18 @@ class QualityEvaluator:
 
         return all_metrics, score, max_score
 
-    def _get_base_metrics(self, texto: str) -> Dict[str, Any]:
+    def _get_base_metrics(self, texto: str, categoria: str = None) -> Dict[str, Any]:
         """Obtém métricas base do texto"""
         word_count = len(texto.split())
+
+        # Use limites específicos da categoria se disponível
+        if categoria and categoria in self.category_limits:
+            min_words = self.category_limits[categoria]["min"]
+            max_words = self.category_limits[categoria]["max"]
+        else:
+            min_words = self.min_words
+            max_words = self.max_words
+
         return {
             "word_count": word_count,
             "has_cpf": bool(re.search(r"\d{3}\.?\d{3}\.?\d{3}-?\d{2}", texto)),
@@ -66,7 +83,7 @@ class QualityEvaluator:
             "has_specific_data": bool(
                 re.search(r"(\d{1,2}/\d{1,2}/\d{4}|R\$\s*\d+|\d{5}-?\d{3})", texto)
             ),
-            "ideal_length": self.min_words <= word_count <= self.max_words,
+            "ideal_length": min_words <= word_count <= max_words,
         }
 
     def _get_category_metrics(self, texto: str, categoria: str) -> Dict[str, bool]:
@@ -114,6 +131,31 @@ class QualityEvaluator:
                         r"(objetivo|assunto|tema|propósito)", texto, re.IGNORECASE
                     )
                 ),
+            },
+            # NOVA CATEGORIA ADICIONADA
+            "demissao_desligamento": {
+                "has_rescision_terms": bool(
+                    re.search(
+                        r"(rescisão|rescisório|demissão|desligamento|aviso prévio)",
+                        texto,
+                        re.IGNORECASE,
+                    )
+                ),
+                "has_employment_data": bool(
+                    re.search(
+                        r"(matrícula|admissão|admitido|contratado|salário)",
+                        texto,
+                        re.IGNORECASE,
+                    )
+                ),
+                "has_legal_procedures": bool(
+                    re.search(
+                        r"(homologação|sindicato|CLT|FGTS|13º|férias)",
+                        texto,
+                        re.IGNORECASE,
+                    )
+                ),
+                "has_financial_calculations": bool(re.search(r"R\$\s*[\d.,]+", texto)),
             },
         }
 

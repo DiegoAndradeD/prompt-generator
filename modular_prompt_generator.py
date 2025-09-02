@@ -1,6 +1,10 @@
 import random
 from typing import List, Optional, Dict, Any
 
+import concurrent
+
+from tqdm import tqdm
+
 from config.settings import AppConfig
 from services.category_loader import CategoryLoader
 from services.prompt_builder import PromptBuilder
@@ -191,13 +195,32 @@ class ModularPromptGenerator:
             print("❌ Nenhuma categoria disponível para geração em lote!")
             return results
 
-        for i in range(num_prompts):
-            print(f"\n🔄 Gerando prompt {i+1}/{num_prompts}...")
-            category = random.choice(available_categories)
-            prompt = self.generate_prompt(category_name=category)
-            if prompt:
-                results.append(prompt)
-            else:
-                print(f"❌ Falha ao gerar prompt {i+1}")
+        # Cria uma lista de categorias para gerar, uma para cada prompt
+        categories_to_generate = [
+            random.choice(available_categories) for _ in range(num_prompts)
+        ]
+
+        print(f"\n🔄 Gerando {num_prompts} prompts em paralelo...")
+
+        # Usa ThreadPoolExecutor para executar as gerações em paralelo
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            # O executor.map aplica a função generate_prompt a cada categoria na lista
+            # e coleta os resultados. O tqdm cria uma barra de progresso.
+            future_to_prompt = {
+                executor.submit(self.generate_prompt, cat): cat
+                for cat in categories_to_generate
+            }
+
+            for future in tqdm(
+                concurrent.futures.as_completed(future_to_prompt),
+                total=num_prompts,
+                desc="Gerando Prompts",
+            ):
+                prompt = future.result()
+                if prompt:
+                    results.append(prompt)
+                else:
+                    category = future_to_prompt[future]
+                    print(f"❌ Falha ao gerar prompt para a categoria '{category}'")
 
         return results
